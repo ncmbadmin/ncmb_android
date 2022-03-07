@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install git-crypt
-        run:
+        run: |
             sudo apt-get install gnupg2 -y
             gpg2 --list-keys
       - name: Import GPG key
