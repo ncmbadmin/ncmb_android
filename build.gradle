@@ -115,8 +115,12 @@ artifacts {
 }
 
 signing {
-    useGpgCmd()
-    required { gradle.taskGraph.hasTask("uploadArchives") }
+    //useGpgCmd()
+    //required { gradle.taskGraph.hasTask("uploadArchives") }
+    def signingKeyId = findProperty("GPG_KEY_ID")
+    def signingKey = findProperty("GPG_PRIVATE_KEY")
+    def signingPassword = findProperty("GPG_PASSPHRASE")
+    useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
     sign configurations.archives
     //sign publishing.publications.release
 }
