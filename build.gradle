@@ -37,11 +37,18 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     lintOptions {
         disable 'GradleDependency'
         lintConfig file("lint.xml")
     }
 }
+
+
 repositories {
     google()
     mavenCentral()
@@ -117,9 +124,9 @@ artifacts {
 signing {
     //useGpgCmd()
     //required { gradle.taskGraph.hasTask("uploadArchives") }
-    def signingKeyId = findProperty("GPG_KEY_ID")
-    def signingKey = findProperty("GPG_PRIVATE_KEY")
-    def signingPassword = findProperty("GPG_PASSPHRASE")
+    def signingKeyId = System.getenv("GPG_KEY_ID")
+    def signingKey = System.getenv("GPG_PRIVATE_KEY")
+    def signingPassword = System.getenv("GPG_PASSPHRASE")
     useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
     sign configurations.archives
     //sign publishing.publications.release
