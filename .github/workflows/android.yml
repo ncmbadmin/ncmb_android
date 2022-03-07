@@ -5,12 +5,12 @@ on: [push, pull_request]
 jobs:
   build_and_test:
     environment: android
-    runs-on: macOS-latest
+    runs-on: ubuntu-18.04
 
     steps:
       - uses: actions/checkout@v2
       - name: Install git-crypt
-        run: brew install gpg2 gnupg pinentry-mac
+        run: sudo apt install -y git-crypt gnupg2
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v4
