@@ -46,8 +46,8 @@ jobs:
           echo "signing.gnupg.secretKeyRingFile=~/.gnupg/secring.gpg" >> ~/.gnupg/gradle.properties
           cat ~/.gnupg/gradle.properties
 
-#      - name: build and test Android SDK
-#        run: ./gradlew build test --continue --info
+      - name: build and test Android SDK
+        run: ./gradlew build test --continue --info
 
 #      - name: Publish to Nexus repository
 #        run: ./gradlew uploadArchive
