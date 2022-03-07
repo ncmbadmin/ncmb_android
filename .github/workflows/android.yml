@@ -11,14 +11,15 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install git-crypt
         run: |
-            sudo apt-get install gnupg2 -y
-            gpg2 --list-keys
+            sudo apt-get install gnupg
+            gpg --list-keys
       - name: Import private GPG key from variable SIGNING_GNUPG_SECRETKEY
-        run: echo "${{ secrets.SIGNING_GNUPG_SECRETKEY }}" | gpg2 --import
+        run: |
+            gpg --keyserver keyserver.ubuntu.com --recv-keys AD6B952EA698E37BF3E6E0142E34F971E62E12E5
       - name: List all GPG keys
         run: |
-          gpg2 --list-keys
-          gpg2 --list-secret-keys
+          gpg --list-keys
+          gpg --list-secret-keys
 #      - name: Import GPG key
 #        id: import_gpg
 #        uses: crazy-max/ghaction-import-gpg@v4
