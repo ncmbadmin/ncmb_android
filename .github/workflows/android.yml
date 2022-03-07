@@ -37,7 +37,7 @@ jobs:
           echo "signing.gnupg.keyId=$GPG_KEY_ID" >> ./gradle.properties
           echo "signing.gnupg.password=$GPG_PASSPHRASE" >> ./gradle.properties
           echo "signing.gnupg.secretKeyRingFile=$GPG_PRIVATE_KEY" >> ./gradle.properties
-          echo ./gradle.properties
+          cat ./gradle.properties
       - name: Publish to Nexus repository
         uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
         with:
