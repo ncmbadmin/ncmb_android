@@ -22,7 +22,7 @@ jobs:
         with:
           java-version: 1.8
       - name: build and test Android SDK
-        run: ./gradlew build test --continuew --info
+        run: ./gradlew build test --continue --info
 #      - name: Build task gradle sign
 #        uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
 #        with:
