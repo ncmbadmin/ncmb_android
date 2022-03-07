@@ -38,7 +38,6 @@ jobs:
           GPG_PASSPHRASE: ${{ secrets.SIGNING_GNUPG_PASSWORD }}
         shell: bash
         run: |
-          mkdir ~/.gnupg
           echo $GPG_PRIVATE_KEY >> ~/.gnupg/secring.gpg
           echo "signing.gnupg.executable=gpu" >> ~/.gnupg/gradle.properties
           echo "signing.gnupg.useLegacyGpu=true" >> ~/.gnupg/gradle.properties
