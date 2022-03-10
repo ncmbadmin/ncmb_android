@@ -27,12 +27,16 @@ jobs:
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v4
         with:
-          gpg_private_key: ${{ secrets.SIGNING_GNUPG_SECRETKEY }}.keys[0]
+          gpg_private_key: ${{ secrets.SIGNING_GNUPG_SECRETKEY }}
           passphrase: ${{ secrets.SIGNING_GNUPG_PASSWORD }}
 
       - name: List all GPG secret keys
         run: |
           gpg --list-secret-keys --keyid-format=long
+          touch test.txt
+          gpg -ab test.txt
+          gpg --verify test.txt.asc 
+
 
 #      - name: Add key file to gradle.properties
 #        env:
