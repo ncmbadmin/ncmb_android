@@ -58,7 +58,7 @@ jobs:
       - name: build and test Android SDK
         run: ./gradlew build test --continue --info
 
-#      - name: Publish to Nexus repository
-#        run: ./gradlew uploadArchive
+      - name: Publish to Nexus repository
+        run: ./gradlew uploadArchive
 
 
