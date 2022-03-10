@@ -18,24 +18,21 @@ jobs:
             brew install gnupg
             gpg --list-keys
 
-#      - name: Import public GPG key
-#        run: |
-#            gpg --keyserver keyserver.ubuntu.com --recv-keys AD6B952EA698E37BF3E6E0142E34F971E62E12E5
-#            gpg --list-keys
-#
-#      - name: Import GPG key
-#        id: import_gpg
-#        uses: crazy-max/ghaction-import-gpg@v4
-#        with:
-#          gpg_private_key: ${{ secrets.SIGNING_GNUPG_SECRETKEY }}.keys[0]
-#          passphrase: ${{ secrets.SIGNING_GNUPG_PASSWORD }}
+      - name: Import public GPG key
+        run: |
+            gpg --keyserver keyserver.ubuntu.com --recv-keys 2E34F971E62E12E5
+            gpg --list-keys
 
-#      - name: Import private GPG key from variable GITHUB_SECRETS_PRIVATE_GPG_KEY
-#        run: echo "${{ secrets.SIGNING_GNUPG_SECRETKEY }}" | gpg2 --import
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.SIGNING_GNUPG_SECRETKEY }}.keys[0]
+          passphrase: ${{ secrets.SIGNING_GNUPG_PASSWORD }}
 
       - name: List all GPG secret keys
         run: |
-          gpg --list-secret-keys
+          gpg --list-secret-keys --keyid-format=long
 
 #      - name: Add key file to gradle.properties
 #        env:
